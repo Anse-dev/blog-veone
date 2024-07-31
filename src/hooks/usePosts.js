@@ -9,8 +9,11 @@ export const usePosts = () => {
     useEffect(() => {
         const fetchPosts = async () => {
             try {
-                const response = await axios.get('https://jsonplaceholder.typicode.com/posts');
-                setPosts(response.data);
+                setTimeout(async () => {
+                    const response = await axios.get('https://jsonplaceholder.typicode.com/posts');
+                    setPosts(response.data);
+                }, 3000)
+
             } catch (err) {
                 setError(err);
             } finally {

@@ -1,15 +1,15 @@
-'use client'
 
+
+import React from 'react'
+import { usePosts } from '../hooks/usePosts';
 import Link from 'next/link';
-import { usePosts } from '../../hooks/usePosts';
 
-
-export default async function Home() {
+const ListPosts = () => {
     const { posts, loading, error } = usePosts();
 
-    /* if (loading) {
+    if (loading) {
         return <div>Chargement...</div>;
-    } */
+    }
 
     if (error) {
         return <div>Erreur lors du chargement des articles</div>;
@@ -17,7 +17,7 @@ export default async function Home() {
 
     return (
         <div className="max-w-2xl mx-auto p-4">
-            <h2 className="text-2xl font-bold mb-4">{process.env.NEXT_PUBLIC_API_URL} N'guettia</h2>
+            <h2 className="text-2xl font-bold mb-4">{process.env.NEXT_PUBLIC_API_URL}</h2>
             <ul className="space-y-4">
                 {posts.map((post) => (
                     <li key={post.id} className="p-4 border rounded shadow">
@@ -31,3 +31,5 @@ export default async function Home() {
         </div>
     );
 }
+
+export default ListPosts
